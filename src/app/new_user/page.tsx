@@ -2,6 +2,7 @@
 import { prisma } from "@/prisma/prisma";
 import { Role } from "@prisma/client";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
 interface Fields {
   fullName: string;
@@ -11,6 +12,8 @@ interface Fields {
 }
 
 export default function AddUser() {
+  const router = useRouter();
+
   const [fields, setFields] = useState<Fields>({
     fullName: "",
     email: "",
@@ -35,7 +38,9 @@ export default function AddUser() {
         password: fields.password,
         role: fields.role as Role,
       }),
-    }).then(async (e) => alert(await e.clone().text()));
+    })
+      .then(async (e) => alert(await e.clone().text()))
+      .then((_) => router.replace("/"));
   };
 
   return (
@@ -90,12 +95,10 @@ export default function AddUser() {
           <option value={Role.STAFF}>Staff</option>
         </select>
       </label>
-      <input
+      <button
         type="submit"
-        value={"submit"}
-        className="border-2 border-black"
-        
-      ></input>
+        className="p-1 border-2 border-black"
+      >Submit</button>
     </form>
   );
 }
