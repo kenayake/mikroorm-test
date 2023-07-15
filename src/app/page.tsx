@@ -7,7 +7,7 @@ import DeleteButton from "./delete";
 type Users = User[];
 
 export default async function Home() {
-  const users: Users = await fetch("http://localhost:3000/api/users", {
+  const users: Users = await fetch("http://mikroorm-test-git-master-thohgc.vercel.app/api/users", {
     method: "GET",
     next: {
       tags: ['users'],

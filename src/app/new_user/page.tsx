@@ -30,7 +30,7 @@ export default function AddUser() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("http://localhost:3000/api/users", {
+    const res = await fetch("http://mikroorm-test-git-master-thohgc.vercel.app/api/users", {
       method: "POST",
       body: JSON.stringify({
         fullName: fields.fullName,

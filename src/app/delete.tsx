@@ -5,7 +5,7 @@ export default function DeleteButton({ id }: { id: string }) {
   const router = useRouter();
 
   const handleClick = async () => {
-    const res = await fetch(`http://localhost:3000/api/${id}`, {
+    const res = await fetch(`http://mikroorm-test-git-master-thohgc.vercel.app/api/${id}`, {
       method: "DELETE"
     })
       .then(async (e) => alert(await e.clone().text()))
